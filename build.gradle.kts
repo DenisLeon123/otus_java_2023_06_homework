@@ -27,8 +27,7 @@ allprojects {
         mavenCentral()
     }
 
-    val guava: String by project
-
+    var guava = "11.0.2"
 
     apply(plugin = "io.spring.dependency-management")
     dependencyManagement {

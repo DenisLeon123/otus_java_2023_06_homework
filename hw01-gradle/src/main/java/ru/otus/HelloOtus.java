@@ -1,6 +1,5 @@
 package ru.otus;
 
-import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 import com.google.common.collect.ComparisonChain;
 import com.google.common.collect.Multiset;
@@ -48,11 +47,10 @@ public class HelloOtus<T> implements Comparable<HelloOtus<T>> {
 
     @Override
     public String toString() {
-        return MoreObjects.toStringHelper(this)
-                .omitNullValues()
-                .add("str", str)
-                .add("ingr", ingr)
-                .add("counts", counts)
-                .toString();
+        return "HelloOtus{" +
+                "str='" + str + '\'' +
+                ", ingr=" + ingr +
+                ", counts=" + counts +
+                '}';
     }
 }
