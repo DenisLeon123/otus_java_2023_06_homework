@@ -1,11 +1,14 @@
 import io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtension
 import org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
 import org.gradle.plugins.ide.idea.model.IdeaLanguageLevel
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
 
 plugins {
     idea
     id("io.spring.dependency-management")
     id("org.springframework.boot") apply false
+    id("com.github.johnrengelman.shadow")
 }
 
 idea {
@@ -17,7 +20,6 @@ idea {
         isDownloadSources = true
     }
 }
-
 
 allprojects {
     group = "ru.otus"
@@ -50,5 +52,14 @@ subprojects {
     tasks.withType<JavaCompile> {
         options.encoding = "UTF-8"
         options.compilerArgs.addAll(listOf("-Xlint:all,-serial,-processing", "-Werror"))
+    }
+
+    tasks.withType<ShadowJar> {
+        archiveBaseName.set("shadowJar_hw01_gradle")
+        archiveVersion.set("SNAPSHOT-0.0.1")
+        archiveClassifier.set("")
+        manifest {
+            attributes(mapOf("Main-Class" to "ru.otus.Main"))
+        }
     }
 }

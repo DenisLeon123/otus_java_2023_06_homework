@@ -1,5 +1,3 @@
-import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
-
 plugins {
     id("java")
     id("com.github.johnrengelman.shadow")
@@ -22,17 +20,6 @@ tasks.test {
     useJUnitPlatform()
 }
 
-tasks {
-    named<ShadowJar>("shadowJar") {
-        archiveBaseName.set("shadowJar_hw01_gradle")
-        archiveVersion.set("SNAPSHOT-0.0.1")
-        archiveClassifier.set("")
-        manifest {
-            attributes(mapOf("Main-Class" to "ru.otus.Main"))
-        }
-    }
-
-    build {
-        dependsOn(shadowJar)
-    }
+tasks.build {
+    dependsOn(tasks.getByName("shadowJar"))
 }
