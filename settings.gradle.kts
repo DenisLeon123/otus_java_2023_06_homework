@@ -1,5 +1,4 @@
 rootProject.name = "otusJava"
-include("L01-gradle")
 
 pluginManagement {
     val dependencyManagement: String by settings
@@ -13,3 +12,4 @@ pluginManagement {
         id("com.github.johnrengelman.shadow") version johnrengelmanShadow
     }
 }
+include("hw01-gradle")
