@@ -39,7 +39,7 @@ public class Atm {
         return this;
     }
 
-    public void getBanknote(int sum) {
+    public boolean getBanknote(int sum) {
         int remainder = sum;
 
         if (this.currentRemainder >= remainder) {
@@ -62,7 +62,11 @@ public class Atm {
             if (this.currentRemainder >= remainder && remainder / TEN.getRating() >= ONE && remainder > ZERO) {
                 minusBanknote(TEN, remainder);
             }
+        } else {
+            return false;
         }
+
+        return true;
     }
 
     private int minusBanknote(Currency currency, int remainder) {
